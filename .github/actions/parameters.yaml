@@ -1,0 +1,107 @@
+
+# Parameters for the TEAM
+teamname: API TEAM
+teamdescription: Auto Team Creation With API
+teampermission: push
+teamnotifications: notifications_enabled
+teamprivacy: closed
+teamslug: api-team
+
+settingsForRepos:
+    # Parameters for ONE repo 
+    ## create repo
+  - org: DLW-TEST-EMRE 
+    name: repo1
+    description: Description for repo1
+    permissionrepo: push
+    is_private: true
+    has_issues: true
+    has_projects: false
+    has_wiki: true
+
+    ## create repo ruleset
+    rulename: RULEONE
+    branch: main
+    commit_message_pattern_operator: contains
+    commit_message_pattern: need_this_messageONE
+    rule_type: commit_message_pattern
+    rule_target: branch
+    rule_enforcement: evaluate
+
+    ## set branch protections
+    strict_status_checks: true
+    contexts: continuous-integration/travis-ci
+    enforce_admins: true
+    dismiss_stale_reviews: true
+    require_code_owner_reviews: true
+    required_approving_review_count: 2
+    require_last_push_approval: true
+    required_linear_history: true
+    allow_force_pushes: true
+    allow_deletions: true
+    block_creations: true
+    required_conversation_resolution: true
+    lock_branch: true
+    allow_fork_syncing: true
+    restrictions:
+      users:
+        - ramdomusernotallowed
+      teams:
+        - random-team
+    required_pull_request_reviews:
+      dismissal_restrictions:
+        users:
+          - octocat
+        teams:
+          - justice-league
+
+      
+    # Parameters for the SECOND repo
+    ## create repo
+  - org: DLW-TEST-EMRE
+    name: repo2
+    description: Description for repo2
+    permissionrepo: push
+    is_private: true
+    has_issues: true
+    has_projects: true
+    has_wiki: false
+
+    ## create repo ruleset
+    rulename: RULETWO
+    rule_type: commit_message_pattern
+    rule_target: branch
+    rule_enforcement: evaluate
+    branch: main
+    commit_message_pattern_operator: contains
+    commit_message_pattern: need_this_messageTWO
+
+    ## set branch protection
+    strict_status_checks: true
+    contexts: continuous-integration/travis-ci
+    enforce_admins: true
+    dismiss_stale_revews: true
+    require_code_owner_reviews: true
+    required_approving_review_count: 2
+    require_last_push_approval: true
+    required_linear_history: true
+    allow_force_pushes: true
+    allow_deletions: true
+    block_creations: true
+    required_conversation_resolution: true
+    lock_branch: true
+    allow_fork_syncing: true
+    restrictions:
+      users:
+        - ramdomusernotallowed
+      teams:
+        - random-team
+    required_pull_request_reviews:
+      dismissal_restrictions:
+        users:
+          - octocat
+        teams:
+          - justice-league
+    # Do the same as previously seen if you want more repositories, parameters can be changed as u wish
+
+

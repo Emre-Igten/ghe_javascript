@@ -1,0 +1,29 @@
+name: Create/Configure Repo
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: |
+          npm install @octokit/action
+          npm install js-yaml
+      
+      - name: Run scripts
+        run: node .github/actions/MAINSCRIPT.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.CONFIG_KEY }}
